@@ -5,7 +5,7 @@ import { fetchPodcasts } from "./api/fetchPodcasts";
 import Header from "./components/Header";
 import SearchBar from "./components/search";      
 import Pagination from "./components/pagination";
-
+import Sort from "./components/sort";
 
 /**
  * App - The root component of the Podcast Explorer application. It handles:
@@ -20,6 +20,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
    const [filteredPodcasts, setFilteredPodcasts] = useState([]); 
   const [searchTerm, setSearchTerm] = useState("");
+   const [sortOption, setSortOption] = useState("");
   const [error, setError] = useState(null); 
 
   
