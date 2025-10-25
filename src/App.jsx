@@ -24,44 +24,46 @@ export default function App() {
   const [error, setError] = useState(null); 
 
   
- const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+ 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = [10];
 
-
+  // Fetch data
   useEffect(() => {
     fetchPodcasts(setPodcasts, setError, setLoading);
   }, []);
 
-  
+  // Filter + sort logic combined
   useEffect(() => {
-    const results = podcasts.filter((podcast) =>
+    let results = podcasts.filter((podcast) =>
       podcast.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setFilteredPodcasts(results);
-  }, [searchTerm, podcasts]);
 
-useEffect(() => {
-    const results = podcasts.filter((podcast) =>
-      podcast.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredPodcasts(results);
-    setCurrentPage(1); 
-  }, [searchTerm, podcasts]);
+    // 🔽 Sorting logic
+    if (sortOption === "date-desc") {
+      results.sort((a, b) => new Date(b.updated) - new Date(a.updated));
+    } else if (sortOption === "title-asc") {
+      results.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortOption === "title-desc") {
+      results.sort((a, b) => b.title.localeCompare(a.title));
+    }
 
- 
+    setFilteredPodcasts(results);
+    setCurrentPage(1);
+  }, [searchTerm, sortOption, podcasts]);
+
+  // Pagination
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedPodcasts = filteredPodcasts.slice(
     startIndex,
     startIndex + itemsPerPage
   );
 
-
   return (
     <>
       <Header />
 
       <main>
-        
         {loading && (
           <div className="message-container">
             <div className="spinner"></div>
@@ -69,7 +71,6 @@ useEffect(() => {
           </div>
         )}
 
-        
         {error && (
           <div className="message-container">
             <div className="error">
@@ -78,14 +79,15 @@ useEffect(() => {
           </div>
         )}
 
-        
         {!loading && !error && (
           <>
-            
-            <SearchBar value={searchTerm} onChange={setSearchTerm} />
+            <div className="controls">
+              <SearchBar value={searchTerm} onChange={setSearchTerm} />
+              <Sort sortOption={sortOption} onSortChange={setSortOption} />
+            </div>
 
-            <PodcastGrid podcasts={filteredPodcasts} genres={genres} />
-          
+            <PodcastGrid podcasts={paginatedPodcasts} genres={genres} />
+
             <Pagination
               totalItems={filteredPodcasts.length}
               itemsPerPage={itemsPerPage}
