@@ -1,10 +1,24 @@
 
 /**
- * Dropdown component to sort podcasts by different criteria.
- *
- * @param {Object} props
- * @param {string} props.sortOption - The currently selected sort option.
- * @param {function} props.onSortChange - Callback to update sort option in the parent component.
+ * Sort Component
+ * 
+ * Provides a dropdown menu that allows users to sort podcasts
+ * by different criteria — such as newest update or title order (A–Z, Z–A).
+ * 
+ * The selected sorting option is passed back to the parent component
+ * through the `onSortChange` callback, allowing the parent to
+ * dynamically update the displayed list.
+ * 
+ * @component
+ * @param {Object} props - Component properties.
+ * @param {string} props.sortOption - The currently selected sorting option.
+ * @param {Function} props.onSortChange - Function called when the user selects a new sort option.
+ * 
+ * @example
+ * // Example usage in parent component:
+ * <Sort sortOption={sortOption} onSortChange={setSortOption} />
+ * 
+ * @returns {JSX.Element} The rendered sort control element.
  */
 export default function Sort({ sortOption, onSortChange }) {
   return (
