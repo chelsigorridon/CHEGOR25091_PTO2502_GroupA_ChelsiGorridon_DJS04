@@ -133,7 +133,7 @@ npm run dev
 Open your browser at:
 http://localhost:5173/
 
-🧠 Developer Notes
+# 🧠 Developer Notes
 
 Built using React functional components and hooks (useState, useEffect).
 
@@ -141,7 +141,7 @@ Features dynamic rendering with props and state management.
 
 Code is well-documented using JSDoc-style comments for clarity and maintainability.
 
-📄 About
+# 📄 About
 
 A front-end project showcasing modern React practices such as:
 

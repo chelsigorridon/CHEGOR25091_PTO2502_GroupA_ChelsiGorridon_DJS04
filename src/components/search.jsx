@@ -40,6 +40,7 @@
       return (
         <input
           type="text"
+          className="search-input"
           placeholder="Search..."
           value={searchTerm}
           onChange={handleChange}
