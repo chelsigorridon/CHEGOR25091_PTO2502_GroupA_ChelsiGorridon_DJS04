@@ -106,12 +106,7 @@ body {
 }
 
 
-
-
 .search-input {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   width: 100%;
   max-width: 300px;
   padding: 10px 15px;
@@ -199,4 +194,35 @@ body {
 .pagination span {
   font-size: 15px;
   color: #444;
+}
+
+.controls {
+  display: flex;           /* Arrange children in a row */
+  justify-content: center; /* Center horizontally */
+  flex-wrap: wrap;         /* Wrap on small screens */
+  gap: 15px;               /* Space between items */
+  align-items: center;     /* Vertically align */
+  margin-bottom: 20px;
+}
+
+/* Optional: make search input slightly bigger */
+.controls input[type="text"] {
+  min-width: 250px;
+  flex: 1;                 /* Optional: makes search expand */
+}
+
+/* Style dropdowns */
+.controls select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+.controls input:focus,
+.controls select:focus {
+  border-color: #6ca0dc;
+  box-shadow: 0 0 5px rgba(108, 160, 220, 0.5);
 }

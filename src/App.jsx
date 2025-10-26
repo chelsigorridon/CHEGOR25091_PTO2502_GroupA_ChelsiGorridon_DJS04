@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import SearchBar from "./components/search";      
 import Pagination from "./components/pagination";
 import Sort from "./components/sort";
+import Genre from "./components/genre";
 
 /**
  * App - The root component of the Podcast Explorer application. It handles:
@@ -82,7 +83,7 @@ export default function App() {
         {!loading && !error && (
           <>
             <div className="controls">
-              <SearchBar value={searchTerm} onChange={setSearchTerm} />
+              <SearchBar onSearch={setSearchTerm} />
               <Sort sortOption={sortOption} onSortChange={setSortOption} />
             </div>
 
