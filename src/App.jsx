@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import SearchBar from "./components/search";      
 import Pagination from "./components/pagination";
 import Sort from "./components/sort";
-import Genre from "./components/genre";
+
 
 /**
  * App - The root component of the Podcast Explorer application. It handles:

@@ -1,24 +1,16 @@
 
-import React from "react";
-
 const Genre = ({ selectedGenre, onGenreChange, genres }) => {
   return (
-    <div className="genre-filter">
-      <label htmlFor="genre">Filter by Genre:</label>
-      <select
-        id="genre"
-        value={selectedGenre}
-        onChange={(e) => onGenreChange(e.target.value)}
-      >
-        <option value="">All</option>
-        {genres.map((genre, index) => (
-          <option key={index} value={genre}>
-            {genre}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select
+      value={selectedGenre}
+      onChange={(e) => onGenreChange(e.target.value)}
+    >
+      <option value="">All Genres</option>
+      {genres.map((genre) => (
+        <option key={genre} value={genre}>{genre}</option>
+      ))}
+    </select>
   );
 };
 
-export default Genre;
+export default Genre

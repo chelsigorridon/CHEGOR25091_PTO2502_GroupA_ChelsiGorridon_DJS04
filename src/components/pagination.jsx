@@ -19,7 +19,7 @@
  * // Example usage in parent component:
  * <Pagination
  *   totalItems={filteredPodcasts.length}
- *   itemsPerPage={8}
+ *   itemsPerPage={10}
  *   currentPage={currentPage}
  *   onPageChange={setCurrentPage}
  * />
